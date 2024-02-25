@@ -3,20 +3,30 @@ name: iris-feature-and-prediction-pipelines
 on:
   workflow_dispatch:
   schedule:
-    - cron: '11 11 * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   test_schedule:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
-          python-version: '3.8.x'
+          python-version: '3.10.9'
           
+      - name: Install Jupyter
+        run: |
+         python -m pip install jupyter
+
+      - name: List Jupyter Kernels
+        run: jupyter kernelspec list
+
+      - name: Install scikit-learn
+        run: python -m pip install scikit-learn==1.2.1
+
       - name: install python packages
         run: |
           python -m pip install --upgrade pip
