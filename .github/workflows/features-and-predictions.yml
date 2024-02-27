@@ -46,7 +46,9 @@ jobs:
           git checkout gh-pages
 
       - name: pop stash
-        run: git stash pop
+        run: |
+          git stash show -p
+          git apply && git stash drop
 
       - name: publish github pages
         uses: stefanzweifel/git-auto-commit-action@v4
