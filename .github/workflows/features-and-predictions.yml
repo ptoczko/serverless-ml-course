@@ -41,7 +41,9 @@ jobs:
         run: git stash
 
       - name: checkout gh-pages
-        run: git checkout gh-pages
+        run: |
+          git fetch
+          git checkout gh-pages
 
       - name: pop stash
         run: git stash pop
