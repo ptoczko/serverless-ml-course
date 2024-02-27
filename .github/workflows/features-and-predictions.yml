@@ -47,8 +47,7 @@ jobs:
 
       - name: pop stash
         run: |
-          git stash show -p
-          git apply && git stash drop
+          git stash show -p | git apply
 
       - name: publish github pages
         uses: stefanzweifel/git-auto-commit-action@v4
