@@ -49,19 +49,11 @@ jobs:
         run: |
           git fetch
 
-      - name: handle rm
-        run: |
-          rm assets/confusion_matrix.png assets/df_recent.png
-
       - name: checkout
         run: git checkout gh-pages
 
-      - name: handle rm
-        run: |
-          rm assets/confusion_matrix.png assets/df_recent.png
-
       - name: pop
-        run: git stash pop
+        run: git checkout stash -- .
 
       - name: publish github pages
         uses: stefanzweifel/git-auto-commit-action@v4
