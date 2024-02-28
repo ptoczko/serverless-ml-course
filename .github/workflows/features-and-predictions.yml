@@ -58,7 +58,7 @@ jobs:
 
       - name: handle rm
         run: |
-          rm assets/confusion_matrix.png assets/df_recent.pn
+          rm assets/confusion_matrix.png assets/df_recent.png
 
       - name: pop
         run: git stash pop
