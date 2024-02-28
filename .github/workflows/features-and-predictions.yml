@@ -39,6 +39,7 @@ jobs:
 
       - name: handle git branches
         run: |
+          git stash
           git fetch
           git checkout gh-pages
           git pull
