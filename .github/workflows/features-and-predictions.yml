@@ -40,11 +40,24 @@ jobs:
       - name: handle git branches
         run: |
           git status
+          
+      - name: stash
+        run: |
           git stash
+
+      - name: handle fetch
+        run: |
           git fetch
+
+      - name: handle rm
+        run: |
           rm assets/confusion_matrix.png assets/df_recent.png
-          git checkout gh-pages
-          git stash pop
+
+      - name: checkout
+        run: git checkout gh-pages
+
+      - name: pop
+        run: git stash pop
 
       - name: publish github pages
         uses: stefanzweifel/git-auto-commit-action@v4
