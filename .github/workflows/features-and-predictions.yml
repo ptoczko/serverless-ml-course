@@ -39,10 +39,21 @@ jobs:
 
       - name: handle git branches
         run: |
+          git status
+          
+      - name: stash
+        run: |
+          git stash
+
+      - name: handle fetch
+        run: |
           git fetch
-          git checkout gh-pages
-          git pull
-          git stash pop
+
+      - name: checkout
+        run: git checkout gh-pages
+
+      - name: pop
+        run: git checkout stash -- .
 
       - name: publish github pages
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -102,4 +113,3 @@ jobs:
       
           # Optional. Create given branch name in local and remote repository.
           create_branch: false
-
