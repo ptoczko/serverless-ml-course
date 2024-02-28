@@ -37,18 +37,6 @@ jobs:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
         run: ./src/01-module/scripts/run-feature-and-prediction-pipelines.sh
 
-      - name: stash changes
-        run: git stash
-
-      - name: checkout gh-pages
-        run: |
-          git fetch
-          git checkout gh-pages
-
-      - name: pop stash
-        run: |
-          git stash show -p | git apply
-
       - name: publish github pages
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -57,7 +45,7 @@ jobs:
           # Optional. Local and remote branch name where commit is going to be pushed
           #  to. Defaults to the current branch.
           #  You might need to set `create_branch: true` if the branch does not exist.
-          branch: gh-pages
+          branch: main
  
           # Optional. Options used by `git-commit`.
           # See https://git-scm.com/docs/git-commit#_options
@@ -107,4 +95,3 @@ jobs:
       
           # Optional. Create given branch name in local and remote repository.
           create_branch: false
-
