@@ -56,6 +56,10 @@ jobs:
       - name: checkout
         run: git checkout gh-pages
 
+      - name: handle rm
+        run: |
+          rm assets/confusion_matrix.png assets/df_recent.pn
+
       - name: pop
         run: git stash pop
 
