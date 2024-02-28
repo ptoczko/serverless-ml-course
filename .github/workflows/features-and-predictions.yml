@@ -42,8 +42,8 @@ jobs:
           git status
           git stash
           git fetch
-          git checkout gh-pages
           rm assets/confusion_matrix.png assets/df_recent.png
+          git checkout gh-pages
           git stash pop
 
       - name: publish github pages
